@@ -1,0 +1,28 @@
+.root {
+    max-width: 100%;
+    min-width: 320px;
+    margin: 0;
+    padding: 0;
+    background-color: #000000;
+    font-family: "Inter", "Arial", sans-serif;
+    font-style: normal;
+  }
+
+.header {
+  margin: 0 200px;
+  padding: 45px 0 41px;
+  border-bottom: 1px solid  #545454;
+}
+
+.header__logo {
+  margin: 0;
+  padding: 0;
+  width: 142px;
+  height: 33px;
+} 
+.border {
+  margin: 0;
+  padding: 0 200px 100px;
+
+  background-color: #000000;
+}
