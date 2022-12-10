@@ -20,9 +20,50 @@
   width: 142px;
   height: 33px;
 } 
-.border {
+
+.profile {
+  margin: 0;
+  padding: 40px 200px 51px;
+}
+
+.profile__avatar {
+  border-radius: 120px;
+}
+
+.cards {
   margin: 0;
   padding: 0 200px 100px;
+  display: grid;
+  justify-content: center;
+  grid-template-columns: repeat(3, 282px);
+  gap: 20px 17px;
+}
 
-  background-color: #000000;
+.card-container {
+  border-radius: 10px;
+  overflow: hidden;
+  max-width: 282px;
+  max-height: 361px;
+}
+
+.card-image {
+  max-width: 282px;
+  max-height: 282px;
+  padding: 0;
+  margin: 0;
+  display: block;
+}
+
+.card-info {
+  background-color: #ffffff;
+  padding: 0;
+  margin: 0;
+  max-width: 282px;
+  max-height: 361px;
+  min-height: 79px;
+}
+
+.card-caption {
+  padding: 0;
+  margin: 0;
 }
