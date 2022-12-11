@@ -1,69 +1,17 @@
-.root {
-    max-width: 100%;
-    min-width: 320px;
-    margin: 0;
-    padding: 0;
-    background-color: #000000;
-    font-family: "Inter", "Arial", sans-serif;
-    font-style: normal;
-  }
 
-.header {
-  margin: 0 200px;
-  padding: 45px 0 41px;
-  border-bottom: 1px solid  #545454;
-}
 
-.header__logo {
-  margin: 0;
-  padding: 0;
-  width: 142px;
-  height: 33px;
-} 
-
-.profile {
-  margin: 0;
-  padding: 40px 200px 51px;
-}
-
-.profile__avatar {
-  border-radius: 120px;
-}
-
-.cards {
-  margin: 0;
-  padding: 0 200px 100px;
-  display: grid;
-  justify-content: center;
-  grid-template-columns: repeat(3, 282px);
-  gap: 20px 17px;
-}
-
-.card-container {
-  border-radius: 10px;
-  overflow: hidden;
-  max-width: 282px;
-  max-height: 361px;
-}
-
-.card-image {
-  max-width: 282px;
-  max-height: 282px;
+.cards__caption {
   padding: 0;
   margin: 0;
-  display: block;
 }
 
-.card-info {
-  background-color: #ffffff;
-  padding: 0;
+.footer {
   margin: 0;
-  max-width: 282px;
-  max-height: 361px;
-  min-height: 79px;
+  padding: 67px 200px 60px;
 }
 
-.card-caption {
-  padding: 0;
+.footer__name {
   margin: 0;
+  padding: 0;
+  color: #545454;
 }
