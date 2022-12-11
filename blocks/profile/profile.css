@@ -1,4 +1,9 @@
 .profile {
     margin: 0;
     padding: 40px 200px 51px;
+    display: grid;
+    align-items: start;
+    grid-template-columns: 168.75px 330px 1fr 150px;
+    grid-template-rows: repeat(2, 1fr);
+    gap: 0;
   }

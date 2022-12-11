@@ -1,0 +1,8 @@
+.profile__plus-button {
+    height: 50px;
+    width: 150px;
+    border: 1px solid white;
+    grid-column: 4/4;
+    grid-row: 1/3;
+    align-self: center;
+}
