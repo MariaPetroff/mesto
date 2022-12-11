@@ -8,5 +8,11 @@
     gap: 18px;
     padding: 0;
     margin: 0;
-    margin-bottom: -9px;
+    margin-bottom: -10px;
+}
+
+@media screen and (max-width: 1010px) {
+    .profile__name-form {
+      align-self: center;
+  }
 }
