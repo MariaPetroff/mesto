@@ -1,4 +1,5 @@
 .cards__caption {
+    display: flex;
     padding: 0;
     margin: 0;
   }

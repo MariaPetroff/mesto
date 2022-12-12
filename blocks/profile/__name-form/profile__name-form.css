@@ -14,5 +14,6 @@
 @media screen and (max-width: 1010px) {
     .profile__name-form {
       align-self: center;
+      gap: 10px;
   }
 }
