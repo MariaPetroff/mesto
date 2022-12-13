@@ -5,20 +5,3 @@
     overflow: hidden;
     clip: rect(0 0 0 0);
 }
-
-.profile__pseudo-item_button_edit {
-    display: inline-block;
-    width: 24px;
-    height: 24px;
-    border: 1px solid #ffffff;
-    background-image: url(../../../images/edit-button.svg);
-    background-repeat: no-repeat;
-    background-position: center;
-}
-
-@media screen and (max-width: 1010px) {
-    .profile__pseudo-item_button_edit {
-        height: 18px;
-        width: 18px;
-  }
-}

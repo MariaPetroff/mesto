@@ -5,12 +5,3 @@
     overflow: hidden;
     clip: rect(0 0 0 0);
 }
-
-.cards__pdeudo-item_button_plus {
-    display: flex;
-    height: 19px;
-    width: 22px;
-    background-image: url(../../../images/like-button.svg);
-    background-repeat: no-repeat;
-    background-position: center;
-}

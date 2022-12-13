@@ -1,0 +1,8 @@
+.cards__pdeudo-item_button_like {
+    display: flex;
+    height: 19px;
+    width: 22px;
+    background-image: url(../../../../images/like-button.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+}

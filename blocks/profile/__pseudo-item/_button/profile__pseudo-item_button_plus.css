@@ -1,0 +1,16 @@
+.profile__pseudo-item_button_plus {
+    display: flex;
+    height: 50px;
+    width: 150px;
+    border: 1px solid white;
+    background-image: url(../../../../images/plus-button.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+@media screen and (max-width: 1010px) {
+    .profile__pseudo-item_button_plus {
+        height: 50px;
+        width: 282px;
+  }
+}
