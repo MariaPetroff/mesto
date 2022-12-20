@@ -18,10 +18,6 @@
 @import url(../blocks/profile/__label/profile__label.css);
 @import url(../blocks/profile/__label/_button/profile__label_button_plus.css);
 
-
-
-
-
 @import url(../blocks/cards/cards.css);
 @import url(../blocks/cards/__container/cards__container.css);
 @import url(../blocks/cards/__image/cards__image.css);
@@ -30,6 +26,17 @@
 @import url(../blocks/cards/__like-button/cards__like-button.css);
 @import url(../blocks/cards/__pseudo-item/cards__pseudo-item.css);
 @import url(../blocks/cards/__pseudo-item/_button/cards__pdeudo-item_button_like.css);
+
+@import url(../blocks/popup/popup.css);
+@import url(../blocks/popup/__container/popup__container.css);
+@import url(../blocks/popup/__form/popup__form.css);
+@import url(../blocks/popup/__title/popup__title.css);
+@import url(../blocks/popup/__label/popup__label.css);
+@import url(../blocks/popup/__label/_btn/popup__label_btn_submit.css);
+@import url(../blocks/popup/__submit-btn/popup__submit-btn.css);
+@import url(../blocks/popup/__pseudo-item/popup__pseudo-item.css);
+@import url(../blocks/popup/__pseudo-item/_btn/popup__pseudo-item_btn_submit.css);
+
 
 @import url(../blocks/footer/footer.css);
 @import url(../blocks/footer/__copyright/footer__copyright.css);

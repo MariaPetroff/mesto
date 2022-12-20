@@ -1,0 +1,9 @@
+.popup__title {
+    margin: 0 0 54px 0;
+    padding: 0;
+    text-align: center;
+}
+
+.popup__text_name {
+    margin-bottom: 30px;
+}
