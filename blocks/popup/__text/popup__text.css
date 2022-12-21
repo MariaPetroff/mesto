@@ -14,6 +14,12 @@
     color: #000000;
 }
 
+.popup__text:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+
 ::placeholder {
     color: #000000;
     opacity: 1;
