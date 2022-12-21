@@ -9,7 +9,7 @@
     gap: 0;
   }
 
-  @media screen and (max-width: 1060px) {
+  @media screen and (max-width: 1080px) {
     .profile {
       margin: 40px auto 51px;
       padding: 0;
