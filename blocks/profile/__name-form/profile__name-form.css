@@ -11,9 +11,10 @@
     margin-bottom: -10px;
 }
 
-@media screen and (max-width: 1010px) {
+@media screen and (max-width: 1060px) {
     .profile__name-form {
       align-self: center;
       gap: 10px;
+      padding: 0 19px;
   }
 }

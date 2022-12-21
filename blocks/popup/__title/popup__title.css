@@ -1,9 +1,15 @@
 .popup__title {
-    margin: 0 0 54px 0;
+    margin: 0 0 54px;
     padding: 0;
-    text-align: center;
+    font-weight: 900;
+    font-size: 24px;
+    line-height: 29px;
 }
 
-.popup__text_name {
-    margin-bottom: 30px;
+@media screen and (max-width: 630px) {
+    .popup__title {
+        font-size: 18px;
+        line-height: 22px;
+        margin: 0 0 75px;
+    }
 }

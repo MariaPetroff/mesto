@@ -4,10 +4,15 @@
     grid-row: 2/2;
     margin: 16px 0 0;
     padding: 0;
+    font-size: 18px;
+    line-height: 22px;
+    display: flex;
 }
 
-@media screen and (max-width: 1010px) {
+@media screen and (max-width: 1060px) {
     .profile__description{
       margin: 14px 0 36px;
+      font-size: 14px;
+      line-height: 17px;
     }
   }

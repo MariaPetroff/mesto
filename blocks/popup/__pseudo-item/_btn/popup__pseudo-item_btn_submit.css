@@ -15,8 +15,9 @@
     cursor: pointer;
 }
 
-.submit-btn-txt {
-    color: white;
-    margin: 0;
-    padding: 0;
+@media screen and (max-width: 630px) {
+    .popup__pdeudo-item_btn_submit {
+        width: 238px;
+        height: 46px;
+    }
 }

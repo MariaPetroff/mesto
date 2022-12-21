@@ -14,7 +14,7 @@
     cursor: pointer;
 }
 
-@media screen and (max-width: 1010px) {
+@media screen and (max-width: 1060px) {
     .profile__pseudo-item_button_plus {
         height: 50px;
         width: 282px;

@@ -1,4 +1,5 @@
 @import url(../vendor/normalize.css);
+@import url(../vendor/fonts/fonts.css);
 
 @import url(../blocks/root/root.css);
 
@@ -30,12 +31,18 @@
 @import url(../blocks/popup/popup.css);
 @import url(../blocks/popup/__container/popup__container.css);
 @import url(../blocks/popup/__form/popup__form.css);
+@import url(../blocks/popup/__text/popup__text.css);
+@import url(../blocks/popup/__text/_name/popup__text_name.css);
+@import url(../blocks/popup/__text/_job/popup__text_job.css);
 @import url(../blocks/popup/__title/popup__title.css);
 @import url(../blocks/popup/__label/popup__label.css);
 @import url(../blocks/popup/__label/_btn/popup__label_btn_submit.css);
 @import url(../blocks/popup/__submit-btn/popup__submit-btn.css);
+@import url(../blocks/popup/__close-btn/popup__close-btn.css);
 @import url(../blocks/popup/__pseudo-item/popup__pseudo-item.css);
 @import url(../blocks/popup/__pseudo-item/_btn/popup__pseudo-item_btn_submit.css);
+@import url(../blocks/popup/__pseudo-item/_txt/popup__pdeudo-item_txt_submit.css);
+@import url(../blocks/popup/__pseudo-item/_btn/popup__pseudo-item_btn_close.css);
 
 
 @import url(../blocks/footer/footer.css);

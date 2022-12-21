@@ -14,7 +14,7 @@
     cursor: pointer;
 }
 
-@media screen and (max-width: 1010px) {
+@media screen and (max-width: 1060px) {
     .profile__pseudo-item_button_edit {
         height: 18px;
         width: 18px;
