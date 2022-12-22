@@ -2,10 +2,11 @@
     background-color: #ffffff;
     padding: 0 30px 0 21px;
     margin: 0;
-    max-width: 282px;
-    max-height: 361px;
+  
     min-height: 79px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
   }
