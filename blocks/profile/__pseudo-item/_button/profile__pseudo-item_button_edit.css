@@ -1,5 +1,5 @@
 .profile__pseudo-item_button_edit {
-    display: inline-block;
+    display: block;
     width: 24px;
     height: 24px;
     border: 1px solid #ffffff;
@@ -8,6 +8,8 @@
     background-position: center;
     transition: opacity 0.5s;
     box-sizing: border-box;
+    padding: 0;
+    margin: 0 10px 0 0;
 }
 
 .profile__pseudo-item_button_edit:hover {
