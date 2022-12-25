@@ -6,7 +6,10 @@
     padding: 0;
     font-size: 18px;
     line-height: 22px;
-    display: flex;
+    display: block;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
 }
 
 @media screen and (max-width: 1080px) {

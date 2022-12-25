@@ -5,11 +5,14 @@
     background-color: #000000;
     border-radius: 2px;
     padding: 0;
+    padding-top: 1px;
     margin: 0;
+    margin-top: 18px;
     justify-content: center;
     align-items: center;
     transition: opacity, .4s;
     border: none;
+    box-sizing: border-box;
 }
 
 .popup__submit-btn:hover {
@@ -21,5 +24,6 @@
     .popup__submit-btn {
         width: 238px;
         height: 46px;
+        margin-top: 15px;
     }
 }
