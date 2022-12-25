@@ -1,4 +1,4 @@
-.popup__pdeudo-item_txt_submit {
+.popup__submit-txt {
     color: white;
     margin: 0;
     padding: 0;
@@ -8,7 +8,7 @@
 }
 
 @media screen and (max-width: 630px) {
-    .popup__pdeudo-item_txt_submit {
+    .popup__submit-txt {
         font-size: 14px;
         line-height: 17px;
     }

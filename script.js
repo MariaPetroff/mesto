@@ -1,8 +1,8 @@
 
-const editButton = document.querySelector('.profile__pseudo-item_button_edit');
+const editButton = document.querySelector('.profile__edit-button');
 const popup = document.querySelector('.popup');
-const closeButton = document.querySelector('.popup__pseudo-item_btn_close');
-let likeButton = document.querySelectorAll('.cards__pdeudo-item_button_like');
+const closeButton = document.querySelector('.popup__close-btn');
+let likeButton = document.querySelectorAll('.cards__like-button');
 
 //Открытие и закрытие попапа
 editButton.addEventListener('click', function(){
@@ -25,6 +25,8 @@ for(let i=0; i < likeButton.length; i+=1 ) {
         likeButton[i].classList.toggle('like_active');
     });
 }
+
+
 
 //Перезапись данных при нажатии кнопки 'Сохранить'
 let nameContainer = document.querySelector('.profile__name');
