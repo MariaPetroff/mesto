@@ -5,9 +5,11 @@
     border: 2px solid #FFFFFF;
     border-radius: 2px;
     background-image: url(../../../../images/plus-button.svg);
+
     background-repeat: no-repeat;
     background-position: center;
     transition: opacity 0.5s;
+    box-sizing: border-box;
 }
 
 .profile__pseudo-item_button_plus:hover {
@@ -19,5 +21,6 @@
     .profile__pseudo-item_button_plus {
         height: 50px;
         width: 282px;
+        background-size: 16px 16px;
   }
 }

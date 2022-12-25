@@ -4,17 +4,17 @@
     margin: 40px auto 51px;
     padding: 0 200px;
     display: grid;
-    grid-template-columns: 168.75px minmax(330px, 1fr) 150px;
+    grid-template-columns: 150px minmax(330px, 1fr) 150px;
     grid-template-rows: repeat(2, 1fr);
     gap: 0;
   }
 
   @media screen and (max-width: 1080px) {
     .profile {
+      margin: 42px auto 36px;
       padding: 0;
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
     }
   }

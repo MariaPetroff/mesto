@@ -2,7 +2,7 @@
     color: #FFFFFF;
     grid-column: 2/2;
     grid-row: 2/2;
-    margin: 16px 0 0;
+    margin: 17.5px 0 0;
     padding: 0;
     font-size: 18px;
     line-height: 22px;
@@ -11,7 +11,7 @@
 
 @media screen and (max-width: 1080px) {
     .profile__description{
-      margin: 14px 0 36px;
+      margin: 18px 0 34px;
       font-size: 14px;
       line-height: 17px;
     }

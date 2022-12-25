@@ -7,6 +7,7 @@
     background-repeat: no-repeat;
     background-position: center;
     transition: opacity 0.5s;
+    box-sizing: border-box;
 }
 
 .profile__pseudo-item_button_edit:hover {
@@ -18,5 +19,6 @@
     .profile__pseudo-item_button_edit {
         height: 18px;
         width: 18px;
+        background-size: 7.5px 7.5px;
   }
 }
