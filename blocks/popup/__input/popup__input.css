@@ -1,4 +1,4 @@
-.popup__text {
+.popup__input {
     display: block;
     border: none;
     border-bottom: 1px solid;
@@ -19,19 +19,8 @@
     overflow: hidden;
 }
 
-.popup__text:focus {
-    outline: none;
-    box-shadow: none;
-}
-
-
-::placeholder {
-    color: #000000;
-    opacity: 1;
-}
-
 @media screen and (max-width: 630px) {
-    .popup__text {
+    .popup__input {
         max-width: 238px;
     }
 }

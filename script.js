@@ -1,15 +1,24 @@
-
+//Константы и переменные
 const editButton = document.querySelector('.profile__edit-button');
 const popup = document.querySelector('.popup');
+const popupForm = popup.querySelector('.popup__form');
 const closeButton = document.querySelector('.popup__close-btn');
 let likeButton = document.querySelectorAll('.cards__like-button');
 
+let nameContainer = document.querySelector('.profile__name');
+let jobContainer = document.querySelector('.profile__description');
+let inputName = popupForm.querySelector('.popup__input_type_name');
+let inputJob = popupForm.querySelector('.popup__input_type_job');
+
+
+
 //Открытие и закрытие попапа
-editButton.addEventListener('click', function(){
+editButton.addEventListener('click', function openPopup(){
     console.log('click edit');
+    inputName.value = nameContainer.textContent;
+    inputJob.value = jobContainer.textContent;
     popup.classList.add('popup_opened');
 })
-
 
 function closePopup(){
     console.log('click close');
@@ -26,32 +35,10 @@ for(let i=0; i < likeButton.length; i+=1 ) {
     });
 }
 
-
-
-//Перезапись данных при нажатии кнопки 'Сохранить'
-let nameContainer = document.querySelector('.profile__name');
-let jobContainer = document.querySelector('.profile__description');
-const submitButton = document.querySelector('.popup__pdeudo-item_btn_submit');
-
-submitButton.addEventListener('click', function(event){
+//Перезапись данных при нажатии на 'Сохранить' или enter
+popupForm.addEventListener('submit', function saveProfile(event) {
     event.preventDefault();
-    let name = document.querySelector('.popup__text_name');
-    let job = document.querySelector('.popup__text_job');
-    let namePlaceholder = document.querySelector('.popup__text_name');
-    let jobPlaceholder = document.querySelector('.popup__text_job');
-
-    nameContainer.innerHTML = `
-    <h1 class="profile__name">${name.value}</h1>
-    `;
-    jobContainer.innerHTML =`
-    <p class="profile__description">${job.value}</p>
-    `;
-
-    namePlaceholder.innerHTML = `
-    <input type="text" placeholder="${name.value}" class="popup__text popup__text_name" id="popup-name">
-    `;
-    jobPlaceholder.innerHTML = `
-    <input type="text" placeholder="${job.value}" class="popup__text popup__text_job" id="popup-job">
-    `;
-    closePopup();
-});
+    nameContainer.textContent = inputName.value;
+    jobContainer.textContent = inputJob.value;
+    closePopup()
+})

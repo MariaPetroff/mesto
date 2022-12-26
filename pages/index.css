@@ -13,10 +13,6 @@
 @import url(../blocks/profile/__edit-button/profile__edit-button.css);
 @import url(../blocks/profile/__description/profile__description.css);
 @import url(../blocks/profile/__plus-button/profile__plus-button.css);
-@import url(../blocks/profile/__pseudo-item/_button/profile__pseudo-item_button_plus.css);
-@import url(../blocks/profile/__pseudo-item/profile__pseudo-item.css);
-@import url(../blocks/profile/__label/profile__label.css);
-@import url(../blocks/profile/__label/_button/profile__label_button_plus.css);
 
 @import url(../blocks/cards/cards.css);
 @import url(../blocks/cards/__container/cards__container.css);
@@ -24,25 +20,18 @@
 @import url(../blocks/cards/__info/cards__info.css);
 @import url(../blocks/cards/__caption/cards__caption.css);
 @import url(../blocks/cards/__like-button/cards__like-button.css);
-@import url(../blocks/cards/__pseudo-item/cards__pseudo-item.css);
-@import url(../blocks/cards/__pseudo-item/_button/cards__pdeudo-item_button_like.css);
 
 @import url(../blocks/popup/popup.css);
+@import url(../blocks/popup/_opened/popup_opened.css);
 @import url(../blocks/popup/__container/popup__container.css);
 @import url(../blocks/popup/__form/popup__form.css);
-@import url(../blocks/popup/__text/popup__text.css);
-@import url(../blocks/popup/__text/_name/popup__text_name.css);
-@import url(../blocks/popup/__text/_job/popup__text_job.css);
+@import url(../blocks/popup/__input/popup__input.css);
+@import url(../blocks/popup/__input/_type/popup__input_type_name.css);
+@import url(../blocks/popup/__input/_type/popup__input_type_job.css);
 @import url(../blocks/popup/__title/popup__title.css);
-@import url(../blocks/popup/__label/popup__label.css);
-@import url(../blocks/popup/__label/_btn/popup__label_btn_submit.css);
 @import url(../blocks/popup/__submit-btn/popup__submit-btn.css);
 @import url(../blocks/popup/__submit-txt/popup__submit-txt.css);
 @import url(../blocks/popup/__close-btn/popup__close-btn.css);
-@import url(../blocks/popup/__pseudo-item/popup__pseudo-item.css);
-@import url(../blocks/popup/__pseudo-item/_btn/popup__pseudo-item_btn_submit.css);
-@import url(../blocks/popup/__pseudo-item/_txt/popup__pdeudo-item_txt_submit.css);
-@import url(../blocks/popup/__pseudo-item/_btn/popup__pseudo-item_btn_close.css);
 
 
 @import url(../blocks/footer/footer.css);
