@@ -14,14 +14,12 @@ let inputJob = popupForm.querySelector('.popup__input_type_job');
 
 //Открытие и закрытие попапа
 editButton.addEventListener('click', function openPopup(){
-    console.log('click edit');
     inputName.value = nameContainer.textContent;
     inputJob.value = jobContainer.textContent;
     popup.classList.add('popup_opened');
 })
 
 function closePopup(){
-    console.log('click close');
     popup.classList.remove('popup_opened');
 }
 
@@ -30,7 +28,6 @@ closeButton.addEventListener('click', closePopup);
 //нажатие на кнопки лайк
 for(let i=0; i < likeButton.length; i+=1 ) {
     likeButton[i].addEventListener('click', function(){
-        console.log('click like');
         likeButton[i].classList.toggle('like_active');
     });
 }
