@@ -1,6 +1,6 @@
 .profile__description {
     color: #FFFFFF;
-    grid-column: 2/2;
+    grid-column: 2/3;
     grid-row: 2/2;
     margin: 17.5px 0 0;
     padding: 0;
@@ -17,5 +17,18 @@
       margin: 18px 0 34px;
       font-size: 14px;
       line-height: 17px;
+      max-width: 500px;
     }
   }
+
+@media screen and (max-width: 600px) {
+  .profile__description {
+    max-width: 400px;
+}
+}
+
+@media screen and (max-width: 450px) {
+  .profile__description {
+    max-width: 260px;
+}
+}
