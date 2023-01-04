@@ -24,3 +24,7 @@
         max-width: 238px;
     }
 }
+
+::placeholder {
+    color: rgba(196, 196, 196, 1);
+}
