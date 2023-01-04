@@ -1,9 +1,13 @@
 //Константы и переменные
 const editButton = document.querySelector('.profile__edit-button');
-const popup = document.querySelector('.popup');
-const popupForm = popup.querySelector('.popup__form');
-const closeButton = document.querySelector('.popup__close-btn');
-let likeButton = document.querySelectorAll('.cards__like-button');
+const popup = document.querySelectorAll('.popup');
+const popupProfile = document.querySelector('.popup_type_profile');
+const popupPlace = document.querySelector('.popup_type_place');
+const popupForm = document.querySelector('.popup__form');
+const closeButtons = document.querySelectorAll('.popup__close-btn');
+const likeButtons = document.querySelectorAll('.cards__like-button');
+
+const plusButton = document.querySelector('.profile__plus-button');
 
 let nameContainer = document.querySelector('.profile__name');
 let jobContainer = document.querySelector('.profile__description');
@@ -12,25 +16,47 @@ let inputJob = popupForm.querySelector('.popup__input_type_job');
 
 
 
-//Открытие и закрытие попапа
-editButton.addEventListener('click', function openPopup(){
+
+
+//Вызов попапа профиля (и перезапись его данных) при нажатии на кнопку edit
+editButton.addEventListener('click', function(){
     inputName.value = nameContainer.textContent;
     inputJob.value = jobContainer.textContent;
-    popup.classList.add('popup_opened');
+    popupProfile.classList.add('popup_opened');
+    
 })
 
-function closePopup(){
-    popup.classList.remove('popup_opened');
+//Вызов попапа добавления карточки места при нажатии на кнопку плюс
+plusButton.addEventListener('click', function(){
+    popupPlace.classList.add('popup_opened');
+    
+})
+
+//Функция закрытия попапов
+function closePopup() {
+    popup.forEach(item => {
+        if (item.classList.contains('popup_opened')){
+            console.log('close');
+            item.classList.remove('popup_opened');
+        }
+    })
 }
 
-closeButton.addEventListener('click', closePopup);
+// Работа кнопок закрытия попапов
+closeButtons.forEach(item => {
+    item.addEventListener('click', event => {
+        closePopup();
+    })
+})
 
-//нажатие на кнопки лайк
-for(let i=0; i < likeButton.length; i+=1 ) {
-    likeButton[i].addEventListener('click', function(){
-        likeButton[i].classList.toggle('like_active');
-    });
-}
+//нажатия на кнопки лайк
+likeButtons.forEach(item => {
+    item.addEventListener('click', event => {
+        item.classList.toggle('like_active');
+        console.log('like');
+    })
+})
+
 
 //Перезапись данных при нажатии на 'Сохранить' или enter
 popupForm.addEventListener('submit', function saveProfile(event) {
