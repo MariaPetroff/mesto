@@ -10,6 +10,7 @@ const editButton = document.querySelector('.profile__edit-button');
 const closeButtons = document.querySelectorAll('.popup__close-btn');
 const likeButtons = document.querySelectorAll('.cards__like-button');
 const plusButton = document.querySelector('.profile__plus-button');
+const deleteButton = document.querySelectorAll('.cards__delete-btn');
 //Темплейт
 const cardsList = document.querySelector('.cards');
 const cardsTemplate = document.querySelector('.cards-template').content;
@@ -56,12 +57,10 @@ closeButtons.forEach(item => {
     })
 })
 
-//нажатие на кнопки лайк без template эл-тов
-//likeButtons.forEach(item => {
-//    item.addEventListener('click', event => {
-//        item.classList.toggle('like_active');
-//    })
-//})
+//Функция нажатия на кнопки лайк 
+function likingButton(event) {
+  event.target.classList.toggle('like_active');
+}
 
 
 //Перезапись данных профиля при нажатии на 'Сохранить' или enter
@@ -106,11 +105,14 @@ initialCards.forEach(element => {
     const cardsElement = cardsTemplate.cloneNode(true);
     cardsElement.querySelector('.cards__caption').textContent = element.name;
     cardsElement.querySelector('.cards__image').src = element.link;
+    //Слушатели кнопок 
     cardsElement.querySelector('.cards__like-button').addEventListener('click', event => {
-        event.target.classList.toggle('like_active');
-        console.log('like');
+      likingButton(event);
     })
-
+    cardsElement.querySelector('.cards__delete-btn').addEventListener('click', event => {
+      deleteCard(event);
+    })
+    //Добавление
     cardsList.append(cardsElement);
 })
 
@@ -118,15 +120,24 @@ initialCards.forEach(element => {
 //Функция добавления новой карточки
 function addNewCard() {
   const newCard = cardsTemplate.cloneNode(true);
+  //Запись данных из инпутов в поля карточки
   newCard.querySelector('.cards__caption').textContent = inputPlace.value;
   newCard.querySelector('.cards__image').src = inputLink.value;
+  //Слушатели кнопок 
   newCard.querySelector('.cards__like-button').addEventListener('click', event => {
-    event.target.classList.toggle('like_active');
-    console.log('like');
+    likingButton(event);
   })
-
+  newCard.querySelector('.cards__delete-btn').addEventListener('click', event => {
+    deleteCard(event);
+  })
+  //Добавление
   cardsList.prepend(newCard);
   popupFormNewPlace.reset();
+}
+
+//Функция удаления карточки
+function deleteCard(event){
+  event.target.closest('.cards__container').remove();
 }
 
 //Добавление новой карточки при вводе данных и нажатии на 'Создать'/enter
