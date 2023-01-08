@@ -4,6 +4,7 @@ const popup = document.querySelectorAll('.popup');
 const popupProfile = document.querySelector('.popup_type_profile');
 const popupPlace = document.querySelector('.popup_type_place');
 const popupForm = document.querySelector('.popup__form');
+const popupFormNewPlace = document.querySelector('.popup__form_type_new-place');
 //Кнопки
 const editButton = document.querySelector('.profile__edit-button');
 const closeButtons = document.querySelectorAll('.popup__close-btn');
@@ -12,12 +13,16 @@ const plusButton = document.querySelector('.profile__plus-button');
 //Темплейт
 const cardsList = document.querySelector('.cards');
 const cardsTemplate = document.querySelector('.cards-template').content;
-//Переменные
+//Переменные профиля
 let nameContainer = document.querySelector('.profile__name');
 let jobContainer = document.querySelector('.profile__description');
 let inputName = popupForm.querySelector('.popup__input_type_name');
 let inputJob = popupForm.querySelector('.popup__input_type_job');
-
+//Переменные для попапа новой карточки
+let inputPlace = popupFormNewPlace.querySelector('.popup__input_type_place');
+let inputLink = popupFormNewPlace.querySelector('.popup__input_type_link');
+let placeContainer = document.querySelector('.cards__caption');
+let linkContainer = document.querySelector('.cards__image');
 
 
 
@@ -30,10 +35,9 @@ editButton.addEventListener('click', function(){
     
 })
 
-//Вызов попапа добавления карточки места при нажатии на кнопку плюс
+//Вызов попапа добавления карточек места при нажатии на кнопку плюс
 plusButton.addEventListener('click', function(){
     popupPlace.classList.add('popup_opened');
-    
 })
 
 //Функция закрытия попапов
@@ -60,13 +64,14 @@ closeButtons.forEach(item => {
 //})
 
 
-//Перезапись данных при нажатии на 'Сохранить' или enter
+//Перезапись данных профиля при нажатии на 'Сохранить' или enter
 popupForm.addEventListener('submit', function saveProfile(event) {
     event.preventDefault();
     nameContainer.textContent = inputName.value;
     jobContainer.textContent = inputJob.value;
     closePopup()
 })
+
 
 
 const initialCards = [
@@ -96,7 +101,7 @@ const initialCards = [
     }
   ];
 
-
+//template-элементы
 initialCards.forEach(element => {
     const cardsElement = cardsTemplate.cloneNode(true);
     cardsElement.querySelector('.cards__caption').textContent = element.name;
@@ -105,6 +110,28 @@ initialCards.forEach(element => {
         event.target.classList.toggle('like_active');
         console.log('like');
     })
- 
+
     cardsList.append(cardsElement);
+})
+
+ 
+//Функция добавления новой карточки
+function addNewCard() {
+  const newCard = cardsTemplate.cloneNode(true);
+  newCard.querySelector('.cards__caption').textContent = inputPlace.value;
+  newCard.querySelector('.cards__image').src = inputLink.value;
+  newCard.querySelector('.cards__like-button').addEventListener('click', event => {
+    event.target.classList.toggle('like_active');
+    console.log('like');
+  })
+
+  cardsList.prepend(newCard);
+  popupFormNewPlace.reset();
+}
+
+//Добавление новой карточки при вводе данных и нажатии на 'Создать'/enter
+popupFormNewPlace.addEventListener('submit', event => {
+  event.preventDefault();
+  addNewCard();
+  closePopup();
 })
