@@ -137,7 +137,7 @@ function addNewCard() {
 
 //Функция удаления карточки
 function deleteCard(event){
-  event.target.closest('.cards__container').remove();
+  event.target.closest('.cards__list-item').remove();
 }
 
 //Добавление новой карточки при вводе данных и нажатии на 'Создать'/enter
