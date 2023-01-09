@@ -5,6 +5,10 @@ const popupProfile = document.querySelector('.popup_type_profile');
 const popupPlace = document.querySelector('.popup_type_place');
 const popupForm = document.querySelector('.popup__form');
 const popupFormNewPlace = document.querySelector('.popup__form_type_new-place');
+const popupFullCard = document.querySelector('.popup_type_image');
+let popupFigure = popupFullCard.querySelector('.popup__figure');
+let popupFigcaption = popupFullCard.querySelector('.popup__figcaption');
+
 //Кнопки
 const editButton = document.querySelector('.profile__edit-button');
 const closeButtons = document.querySelectorAll('.popup__close-btn');
@@ -14,6 +18,7 @@ const deleteButton = document.querySelectorAll('.cards__delete-btn');
 //Темплейт
 const cardsList = document.querySelector('.cards');
 const cardsTemplate = document.querySelector('.cards-template').content;
+
 //Переменные профиля
 let nameContainer = document.querySelector('.profile__name');
 let jobContainer = document.querySelector('.profile__description');
@@ -101,16 +106,24 @@ const initialCards = [
   ];
 
 //template-элементы
+//Создание карточек
 initialCards.forEach(element => {
     const cardsElement = cardsTemplate.cloneNode(true);
     cardsElement.querySelector('.cards__caption').textContent = element.name;
     cardsElement.querySelector('.cards__image').src = element.link;
     //Слушатели кнопок 
+    //Like
     cardsElement.querySelector('.cards__like-button').addEventListener('click', event => {
       likingButton(event);
     })
+    //Delete
     cardsElement.querySelector('.cards__delete-btn').addEventListener('click', event => {
       deleteCard(event);
+    })
+    //открытие попапа картинки при нажатии
+    cardsElement.querySelector('.cards__image').addEventListener('click', (link, name) => {
+      openFullCard(link, name);
+     
     })
     //Добавление
     cardsList.append(cardsElement);
@@ -124,11 +137,17 @@ function addNewCard() {
   newCard.querySelector('.cards__caption').textContent = inputPlace.value;
   newCard.querySelector('.cards__image').src = inputLink.value;
   //Слушатели кнопок 
+  //Like
   newCard.querySelector('.cards__like-button').addEventListener('click', event => {
     likingButton(event);
   })
+  //Delete
   newCard.querySelector('.cards__delete-btn').addEventListener('click', event => {
     deleteCard(event);
+  })
+  //открытие попапа картинки при нажатии
+  newCard.querySelector('.cards__image').addEventListener('click', (event) => {
+    openFullCard(event);
   })
   //Добавление
   cardsList.prepend(newCard);
@@ -146,3 +165,11 @@ popupFormNewPlace.addEventListener('submit', event => {
   addNewCard();
   closePopup();
 })
+
+//Вызов попапа карточки места при нажатии на эту карточку
+function openFullCard(link, name){
+  popupFullCard.classList.add('popup_opened');
+  popupFigure.src = link.currentTarget.src;
+  popupFigcaption.textContent = name.target.textContent;
+  console.log(popupFigcaption);
+}
