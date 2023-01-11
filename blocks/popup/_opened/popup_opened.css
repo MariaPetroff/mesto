@@ -1,3 +1,7 @@
 .popup_opened {
     display: flex;
+    z-index:99999; /*Чтобы не просвечивали активированные кнопки*/
+    visibility: visible;
+    opacity: 1;
+    transition: visibility 0s linear, opacity 0.4s ease-out;
 }
