@@ -130,8 +130,8 @@ initialCards.forEach(element => {
 })
 
  
-//Функция добавления новой карточки
-function addNewCard(name, link) {
+//Функция создания новой карточки
+function createNewCard(name, link) {
   const newCard = cardsTemplate.cloneNode(true);
   //Запись данных из инпутов в поля карточки
   //Поле названия
@@ -156,10 +156,15 @@ function addNewCard(name, link) {
     openFullCard(event);
     popupFigcaption.textContent = name;
   })
-  //Добавление
-  cardsList.prepend(newCard);
+  //Вызов
+  return newCard;
+}
+
+function addNewCard(name, link) {
+  cardsList.prepend(createNewCard(name, link));
   popupFormNewPlace.reset();
 }
+
 
 //Функция удаления карточки
 function deleteCard(event){
