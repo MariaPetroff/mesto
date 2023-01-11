@@ -6,8 +6,8 @@ const popupPlace = document.querySelector('.popup_type_place');
 const popupForm = document.querySelector('.popup__form');
 const popupFormNewPlace = document.querySelector('.popup__form_type_new-place');
 const popupFullCard = document.querySelector('.popup_type_image');
-let popupFigure = popupFullCard.querySelector('.popup__figure');
-let popupFigcaption = popupFullCard.querySelector('.popup__figcaption');
+const popupFigure = popupFullCard.querySelector('.popup__figure');
+const popupFigcaption = popupFullCard.querySelector('.popup__figcaption');
 
 //Кнопки
 const editButton = document.querySelector('.profile__edit-button');
@@ -121,9 +121,9 @@ initialCards.forEach(element => {
       deleteCard(event);
     })
     //открытие попапа картинки при нажатии
-    cardsElement.querySelector('.cards__image').addEventListener('click', (link, name) => {
-      openFullCard(link, name);
-     
+    cardsElement.querySelector('.cards__image').addEventListener('click', (link) => {
+      openFullCard(link);
+      popupFigcaption.textContent = element.name;
     })
     //Добавление
     cardsList.append(cardsElement);
@@ -131,11 +131,17 @@ initialCards.forEach(element => {
 
  
 //Функция добавления новой карточки
-function addNewCard() {
+function addNewCard(name, link) {
   const newCard = cardsTemplate.cloneNode(true);
   //Запись данных из инпутов в поля карточки
-  newCard.querySelector('.cards__caption').textContent = inputPlace.value;
-  newCard.querySelector('.cards__image').src = inputLink.value;
+  //Поле названия
+  const newCardCaption = newCard.querySelector('.cards__caption');
+  name = inputPlace.value;
+  newCardCaption.textContent = name;
+  //Поле ссылки на картинку
+  const newCardFigure = newCard.querySelector('.cards__image');
+  link = inputLink.value;
+  newCardFigure.src = link;
   //Слушатели кнопок 
   //Like
   newCard.querySelector('.cards__like-button').addEventListener('click', event => {
@@ -148,6 +154,7 @@ function addNewCard() {
   //открытие попапа картинки при нажатии
   newCard.querySelector('.cards__image').addEventListener('click', (event) => {
     openFullCard(event);
+    popupFigcaption.textContent = name;
   })
   //Добавление
   cardsList.prepend(newCard);
@@ -167,9 +174,7 @@ popupFormNewPlace.addEventListener('submit', event => {
 })
 
 //Вызов попапа карточки места при нажатии на эту карточку
-function openFullCard(link, name){
+function openFullCard(link){
   popupFullCard.classList.add('popup_opened');
   popupFigure.src = link.currentTarget.src;
-  popupFigcaption.textContent = name.target.textContent;
-  console.log(popupFigcaption);
 }
