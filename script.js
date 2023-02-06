@@ -37,14 +37,19 @@ let linkContainer = document.querySelector('.cards__image');
 editButton.addEventListener('click', function(){
     inputName.value = nameContainer.textContent;
     inputJob.value = jobContainer.textContent;
-    popupProfile.classList.add('popup_opened');
+    openPopup(popupProfile);
     
 })
 
 //Вызов попапа добавления карточек места при нажатии на кнопку плюс
-plusButton.addEventListener('click', function(){
-    popupPlace.classList.add('popup_opened');
+plusButton.addEventListener('click', event => {
+    openPopup(popupPlace);
 })
+
+//Функция открытия попапов
+function openPopup(item) {
+  item.classList.add('popup_opened');
+}
 
 //Функция закрытия попапов
 function closePopup() {
@@ -63,7 +68,7 @@ closeButtons.forEach(item => {
 })
 
 //Функция нажатия на кнопки лайк 
-function likingButton(event) {
+function toggleLike(event) {
   event.target.classList.toggle('like_active');
 }
 
@@ -114,7 +119,7 @@ initialCards.forEach(element => {
     //Слушатели кнопок 
     //Like
     cardsElement.querySelector('.cards__like-button').addEventListener('click', event => {
-      likingButton(event);
+      toggleLike(event);
     })
     //Delete
     cardsElement.querySelector('.cards__delete-btn').addEventListener('click', event => {
@@ -145,7 +150,7 @@ function createNewCard(name, link) {
   //Слушатели кнопок 
   //Like
   newCard.querySelector('.cards__like-button').addEventListener('click', event => {
-    likingButton(event);
+    toggleLike(event);
   })
   //Delete
   newCard.querySelector('.cards__delete-btn').addEventListener('click', event => {
@@ -180,6 +185,6 @@ popupFormNewPlace.addEventListener('submit', event => {
 
 //Вызов попапа карточки места при нажатии на эту карточку
 function openFullCard(link){
-  popupFullCard.classList.add('popup_opened');
+  openPopup(popupFullCard);
   popupFigure.src = link.currentTarget.src;
 }
