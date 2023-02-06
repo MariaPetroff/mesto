@@ -122,7 +122,6 @@ renderCards(initialCards);
  
 //Функция создания новой карточки
 function createNewCard() {
-  //Запись данных инпутов
   const name = inputPlace.value;
   const link = inputLink.value;
   link.alt = name;
