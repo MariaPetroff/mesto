@@ -12,9 +12,7 @@ const popupFigcaption = popupFullCard.querySelector('.popup__figcaption');
 //Кнопки
 const editButton = document.querySelector('.profile__edit-button');
 const closeButtons = document.querySelectorAll('.popup__close-btn');
-const likeButtons = document.querySelectorAll('.cards__like-button');
 const plusButton = document.querySelector('.profile__plus-button');
-const deleteButtons = document.querySelectorAll('.cards__delete-btn');
 //Темплейт
 const cardsList = document.querySelector('.cards');
 const cardsTemplate = document.querySelector('.cards-template').content;
@@ -52,14 +50,14 @@ function openPopup(item) {
 }
 
 //Функция закрытия попапов
-function closePopup(item) {
-  item.classList.remove('popup_opened');
+function closePopup(popup) {
+  popup.classList.remove('popup_opened');
 }
 
 // Работа кнопок закрытия попапов
-closeButtons.forEach(item => {
-    const popup = item.closest('.popup');
-    item.addEventListener('click', event => {
+closeButtons.forEach(button => {
+    const popup = button.closest('.popup');
+    button.addEventListener('click', event => {
         closePopup(popup);
     })
 })
@@ -75,7 +73,7 @@ profileForm.addEventListener('submit', function saveProfile(event) {
     event.preventDefault();
     nameContainer.textContent = inputName.value;
     jobContainer.textContent = inputJob.value;
-    closePopup()
+    closePopup(popupProfile);
 })
 
 
@@ -109,57 +107,57 @@ const initialCards = [
 
 //template-элементы
 //Создание изначальных карточек из массива
-function renderCards(items) {
-    const cardsElements = items.map((element) => {
-      return createCard(element);
-    })
-    
-    //Добавление
-    cardsList.append(...cardsElements);
-}
-renderCards(initialCards);
+function renderCards() {
+  initialCards.forEach((element) => {
+    const initialItem = createCard(element.link, element.name);
+    cardsList.append(initialItem);
+  });
+};
 
- 
-//Функция создания новой карточки
-function createNewCard() {
-  const name = inputPlace.value;
-  const link = inputLink.value;
-  link.alt = name;
-
-  const newCard = createCard ({name: name, link: link});
-
-  return newCard;
-}
+renderCards();
 
 //Функция создания каркаса карточки
-function createCard (element) {
-  const cardsElement = cardsTemplate.cloneNode(true);
-    cardsElement.querySelector('.cards__caption').textContent = element.name;
+function createCard(link, name) {
+    const cardsElement = cardsTemplate.cloneNode(true);
     const cardImage = cardsElement.querySelector('.cards__image');
-    cardImage.src = element.link;
-    cardImage.alt = element.name;
+    cardImage.src = link;
+    const cardName = cardsElement.querySelector('.cards__caption');
+    cardName.textContent = name;
+
     //Слушатели кнопок 
-    //Like
-    cardsElement.querySelector('.cards__like-button').addEventListener('click', event => {
-      toggleLike(event);
-    })
-    //Delete
-    cardsElement.querySelector('.cards__delete-btn').addEventListener('click', event => {
-      deleteCard(event);
-    })
+    setListeners(cardsElement);
     //открытие попапа картинки при нажатии
     cardImage.addEventListener('click', event => {
-      popupFigure.src = element.link;
-      popupFigcaption.textContent = element.name;
-      popupFigure.alt = element.name;
+      popupFigure.src = link;
+      popupFigcaption.textContent = name;
+      popupFigure.alt = name;
       openPopup(popupFullCard);
     })
 
     return cardsElement;
+};
+
+//Функция для слушателей кнопок
+function setListeners(item) {
+    //Like
+    item.querySelector('.cards__like-button').addEventListener('click', event => {
+      toggleLike(event);
+    })
+    //Delete
+    item.querySelector('.cards__delete-btn').addEventListener('click', event => {
+      deleteCard(event);
+    })
 }
 
-function addNewCard(name, link) {
-  cardsList.prepend(createNewCard(name, link));
+
+//Функция создания новой карточки
+function createNewCard() {
+  const newCard = createCard(inputLink.value, inputPlace.value);
+  return newCard;
+  }
+//Функция добавления новой карточки
+function addNewCard() {
+  cardsList.prepend(createNewCard());
 }
 
 
@@ -172,7 +170,7 @@ function deleteCard(event){
 popupFormNewPlace.addEventListener('submit', event => {
   event.preventDefault();
   addNewCard();
-  closePopup();
+  closePopup(popupPlace);
   popupFormNewPlace.reset();
 })
 
