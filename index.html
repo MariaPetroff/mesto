@@ -44,9 +44,25 @@
     <div class="popup popup_type_profile">
       <div class="popup__container">
         <h2 class="popup__title">Редактировать профиль</h2>
-        <form class="popup__form" name="profile-form">
-          <input type="text" class="popup__input popup__input_type_name" id="popup-name" placeholder="Введите имя" name="input-name">
-          <input type="text" class="popup__input popup__input_type_job" id="popup-job" placeholder="Введите описание" name="input-job">
+        <form class="popup__form" name="profileForm" novalidate>
+          <input
+            type="text"
+            class="popup__input popup__input_type_name"
+            id="popup-name"
+            placeholder="Введите имя"
+            name="input-name"
+            minlength="2"
+            maxlength="40"
+            required>
+          <input 
+            type="text"
+            class="popup__input popup__input_type_job"
+            id="popup-job"
+            placeholder="Введите описание"
+            name="input-job"
+            minlength="2"
+            maxlength="200"
+            required>
           <button type="submit" id="submit-btn_type_profile" class="popup__submit-btn">
               <span class="popup__submit-txt">Сохранить</span>
           </button>
@@ -57,9 +73,23 @@
       <div class="popup popup_type_place">
         <div class="popup__container">
           <h2 class="popup__title">Новое место</h2>
-          <form class="popup__form popup__form_type_new-place" name="new-place-form">
-            <input type="text" class="popup__input popup__input_type_place" id="popup-place" placeholder="Название" name="input-place">
-            <input type="text" class="popup__input popup__input_type_link" id="popup-link" placeholder="Ссылка на картинку" name="input-link">
+          <form class="popup__form popup__form_type_new-place" name="new-place-form" novalidate>
+            <input 
+              type="text"
+              class="popup__input popup__input_type_place"
+              id="popup-place"
+              placeholder="Название"
+              name="input-place"
+              minlength="2"
+              maxlength="30"
+              required>
+            <input 
+              type="url"
+              class="popup__input popup__input_type_link"
+              id="popup-link"
+              placeholder="Ссылка на картинку"
+              name="input-link"
+              required>
             <button type="submit" id="submit-btn_type_place" class="popup__submit-btn">
                 <span class="popup__submit-txt">Создать</span>
             </button>
@@ -76,7 +106,8 @@
       </div>
 
   </div>
-  <script async src="./scripts/script.js"></script>
+  <script defer src="./scripts/script.js"></script>
+  <script defer src="./scripts/validate.js"></script>
 </body>
 
 </html>

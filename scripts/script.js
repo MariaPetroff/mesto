@@ -62,6 +62,22 @@ closeButtons.forEach(button => {
     })
 })
 
+//Закрытие попапов при клике на оверлей
+popups.forEach(popup => {
+  popup.addEventListener('click', event => {
+    closePopup(popup);
+  });
+})
+
+//Закрытие попапов при клике на esq
+popups.forEach((popup) => {
+  popup.addEventListener('click', event => {
+    closePopup(popup);
+  });
+})
+
+
+
 //Функция нажатия на кнопки лайк 
 function toggleLike(event) {
   event.target.classList.toggle('like_active');
