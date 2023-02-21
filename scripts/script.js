@@ -63,18 +63,18 @@ closeButtons.forEach(button => {
 })
 
 //Закрытие попапов при клике на оверлей
-popups.forEach(popup => {
-  popup.addEventListener('click', event => {
-    closePopup(popup);
-  });
-})
+//popups.forEach(popup => {
+//  popup.addEventListener('click', item => {
+//    if (item.classList.contains('popup__container')) {
+//      return;
+//    } else {
+//      closePopup(popup);
+//    }
+//  });
+//})
 
 //Закрытие попапов при клике на esq
-popups.forEach((popup) => {
-  popup.addEventListener('click', event => {
-    closePopup(popup);
-  });
-})
+
 
 
 
