@@ -19,13 +19,6 @@
     overflow: hidden;
 }
 
-.popup__form-item {
-    margin: 0 0 30px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-
 @media screen and (max-width: 630px) {
     .popup__input {
         max-width: 238px;
@@ -34,4 +27,12 @@
 
 ::placeholder {
     color: rgba(196, 196, 196, 1);
+}
+
+.popup__input_type_invalid {
+    border-color: red;
+}
+
+.popup__item-error_type_active {
+    color: red;
 }
