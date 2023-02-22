@@ -8,6 +8,7 @@ const popupFormNewPlace = document.querySelector('.popup__form_type_new-place');
 const popupFullCard = document.querySelector('.popup_type_image');
 const popupFigure = popupFullCard.querySelector('.popup__figure');
 const popupFigcaption = popupFullCard.querySelector('.popup__figcaption');
+const popupContainers = document.querySelectorAll('.popup__container');
 
 //Кнопки
 const editButton = document.querySelector('.profile__edit-button');
@@ -63,15 +64,19 @@ closeButtons.forEach(button => {
 })
 
 //Закрытие попапов при клике на оверлей
-//popups.forEach(popup => {
-//  popup.addEventListener('click', item => {
-//    if (item.classList.contains('popup__container')) {
-//      return;
-//    } else {
-//      closePopup(popup);
-//    }
-//  });
-//})
+popupContainers.forEach(container => {
+  container.addEventListener('click', evt => {
+    evt.preventDefault();
+  });
+})
+
+popups.forEach((popup) => {
+  popup.addEventListener('click', evt => {
+    if (!evt.defaultPrevented) {
+      closePopup(popup);
+    }
+  })
+})
 
 //Закрытие попапов при клике на esq
 
