@@ -5,3 +5,7 @@
     border: rgba(0, 0, 0, 1) 1px solid;
 }
 
+.popup__submit-btn_type_disabled:hover {
+    opacity: .2;
+    cursor: default;
+}
