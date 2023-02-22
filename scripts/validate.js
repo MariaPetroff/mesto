@@ -10,6 +10,7 @@ const formList = Array.from(document.querySelectorAll('.popup__form'))
 formList.forEach((formElement) => {
     const formFields = Array.from(formElement.querySelectorAll('.popup__input'));
     const buttonSubmit = formElement.querySelector('.popup__submit-btn');
+    
     formFields.forEach((elementField) => {
         const elementError = formElement.querySelector(`.${elementField.id}-error`);
         
