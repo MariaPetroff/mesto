@@ -31,6 +31,16 @@ const placeContainer = document.querySelector('.cards__caption');
 const linkContainer = document.querySelector('.cards__image');
 
 
+const formsConfig = {
+  formSelector: '.popup__form',
+  inputSelector: '.popup__input',
+  submitButtonSelector: '.popup__submit-btn',
+  inactiveButtonClass: 'popup__submit-btn_type_disabled',
+  inputErrorClass: 'popup__item-error', //мб неправильно
+  errorClass: 'popup__item-error_type_active'
+}
+
+
 
 
 //Вызов попапа профиля (и перезапись его данных) при нажатии на кнопку edit
@@ -47,13 +57,16 @@ plusButton.addEventListener('click', event => {
 })
 
 //Функция открытия попапов
-function openPopup(item) {
-  item.classList.add('popup_opened');
+function openPopup(popup) {
+  popup.classList.add('popup_opened');
+  //навешивание слушателя для проверки набора на клавиатуре
+  document.addEventListener('keydown', closeOnClickEsq);
 }
 
 //Функция закрытия попапов
 function closePopup(popup) {
   popup.classList.remove('popup_opened');
+  document.removeEventListener('keydown', closeOnClickEsq);
 }
 
 // Работа кнопок закрытия попапов
@@ -68,7 +81,6 @@ closeButtons.forEach(button => {
 popupContainers.forEach(container => {
   container.addEventListener('click', evt => {
     evt.stopPropagation();
-
   });
 })
 
@@ -79,8 +91,17 @@ popups.forEach((popup) => {
 })
 
 //Закрытие попапов при клике на esq
-
-
+const closeOnClickEsq = (el) => {
+  if (el.key === 'Escape') {
+    checkIfOpenedNClose();
+  }
+}
+//Проверка состояния попапа перед закрытием
+const checkIfOpenedNClose = (popup) => {
+  if (popup.classList.contains('popup_opened')) {
+    closePopup(popup);
+  }
+}
 
 
 //Функция нажатия на кнопки лайк 
@@ -195,14 +216,5 @@ popupFormNewPlace.addEventListener('submit', event => {
   popupFormNewPlace.reset();
 })
 
+enableValidation(formsConfig);
 
-const formsConfig = {
-  formSelector: '.popup__form',
-  inputSelector: '.popup__input',
-  submitButtonSelector: '.popup__submit-btn',
-  inactiveButtonClass: 'popup__submit-btn_type_disabled',
-  inputErrorClass: 'popup__item-error',
-  errorClass: 'popup__item-error_type_active'
-}
-
-//enableValidation(formsConfig);

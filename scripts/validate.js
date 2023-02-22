@@ -1,95 +1,70 @@
+//Ф-ции вызова и скрытия ошибки
+const showInputError = (formElement, fieldElement, config) => {
+    const errorElement = formElement.querySelector(`.${fieldElement.id}-error`);
 
-//const enableValidation = (config) => {
-//    const formList = Array.from(document.querySelectorAll(config.formSelector))
-//    formList.forEach((formElement) => {
-//        seteEventListeners(formElement)
-//    })       
-//}
+    errorElement.classList.add(config.errorClass);
+    errorElement.textContent = fieldElement.validationMessage;
+    fieldElement.classList.add(config.inputErrorClass);
+}
 
-const formList = Array.from(document.querySelectorAll('.popup__form'))
-formList.forEach((formElement) => {
-    const formFields = Array.from(formElement.querySelectorAll('.popup__input'));
-    const buttonSubmit = formElement.querySelector('.popup__submit-btn');
-    
-    formFields.forEach((elementField) => {
-        const elementError = formElement.querySelector(`.${elementField.id}-error`);
-        
-    
-        elementField.addEventListener('input', (e) => {
-            const field = e.target;
-           
-            const fieldIsValid = field.validity.valid;
-            elementError.textContent = field.validationMessage;
-            
-    
-            //Проверка на валидность отдельных полей формы
-            if (!fieldIsValid) {
-                field.classList.add('popup__input_type_invalid');
-                elementError.classList.add('popup__item-error_type_active');
-                buttonSubmit.classList.add('popup__submit-btn_type_disabled');
-            } else {
-                field.classList.remove('popup__input_type_invalid');
-                elementError.classList.remove('popup__item-error_type_active');
-            }
-    
-            //Проверка на валидность всей формы
-            const formIsValid = formFields.every((item) => item.validity.valid);
-            if (formIsValid) {
-                buttonSubmit.removeAttribute('disabled');
-                buttonSubmit.classList.remove('popup__submit-btn_type_disabled');
-            } else {
-                buttonSubmit.setAttribute('disabled', 'disabled');
-                buttonSubmit.classList.add('popup__submit-btn_type_disabled');
-            }
-        });
-        
-               //Нажатие кнопки сабмит
-//              const submitProfileHandler = (e) => {
-//                    e.preventDefault();
-//                    buttonSubmitFormProfile.setAttribute('disabled', 'disabled');
-//
-//                    const formIsValid = formFields.every((item) => item.validity.valid);
-//                        if (formIsValid) {
-                            //const name = e.target.name.value; //
-                            //const link = e.target.job.value; //
+const hideInputError = (formElement, fieldElement, config) => {
+    const errorElement = formElement.querySelector(`.${fieldElement.id}-error`);
 
-//                            closePopup(formElement);
-//                      }
-//                }
-
-//                formElement.addEventListener('submit', submitProfileHandler);
-
-    });
-});
-
-
-
-
-
-
-
-
+    errorElement.classList.remove(config.errorClass);
+    errorElement.textContent = '';
+    fieldElement.classList.remove(config.inputErrorClass);
+}
 
 //Проверка на валидность отдельных полей формы
-const checkFieldValidity = (field, elementError, ) => {
-    if (!fieldIsValid) {
-        showInputError(field);
+const checkFieldValidity = (formElement, fieldElement, config) => {
+    if (fieldElement.validity.valid) {
+        hideInputError(formElement, fieldElement, config);
     } else {
-        hideInputError(field);
+        showInputError(formElement, fieldElement, config);
     }
 }
 
-//Добавление класса ошибки
-const showInputError = (e) => {
-    e.classList.add('popup__input_type_invalid');
-    elementError.classList.add('popup__item-error_type_active');
-    buttonSubmitFormProfile.classList.add('popup__submit-btn_type_disabled');
+const hasInvalidField = (formFields) => {
+        //Проверка на валидность всех полей формы
+    return formFields.some((field) => !field.validity.valid);//возвращает true, если хотя бы одно поле невалидно
 }
 
-//Удаление класса ошибки
-const hideInputError = (e) => {
-    e.classList.remove('popup__input_type_invalid');
-    elementError.classList.remove('popup__item-error_type_active');
+//(Де-)активация кнопки сабмита
+const toggleButtonState = (formFields, buttonSubmit, config) => {
+    if (hasInvalidField(formFields)) {
+        buttonSubmit.classList.add(config.inactiveButtonClass);
+        buttonSubmit.setAttribute('disabled', 'disabled');
+    } else {
+        buttonSubmit.removeAttribute('disabled');
+        buttonSubmit.classList.remove(config.inactiveButtonClass);
+    }
+}
+
+const setEventListeners = (formElement, config) => {
+    //Все поля инпутов
+    const formFields = Array.from(formElement.querySelectorAll(config.inputSelector));
+
+    toggleButtonState(formFields, buttonSubmit, config); //Чтобы выключить кнопку при невалидных инпутах до ввода пользователем
+
+    //На каждое поле обработчик валидности
+    formFields.forEach((fieldElement) => {
+        fieldElement.addEventListener('input', () => {
+            checkFieldValidity(formElement, fieldElement, config);
+            toggleButtonState(formFields, buttonSubmit, config);
+        })
+    })
+    //Кнопка сохранения
+    const buttonSubmit = formElement.querySelector(config.submitButtonSelector);
 }
 
 
+
+const enableValidation = (config) => {
+    //все формы
+    const formList = Array.from(document.querySelectorAll(config.formSelector));
+
+    formList.forEach((formElement) => {
+        //Навешивание обработчиков на каждую отдельную форму
+        setEventListeners(formElement, config);
+    })   
+}
