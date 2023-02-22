@@ -31,18 +31,6 @@ const placeContainer = document.querySelector('.cards__caption');
 const linkContainer = document.querySelector('.cards__image');
 
 
-const formsConfig = {
-  formSelector: '.popup__form',
-  inputSelector: '.popup__input',
-  submitButtonSelector: '.popup__submit-btn',
-  inactiveButtonClass: 'popup__submit-btn_type_disabled',
-  inputErrorClass: 'popup__item-error', //мб неправильно
-  errorClass: 'popup__item-error_type_active'
-}
-
-
-
-
 //Вызов попапа профиля (и перезапись его данных) при нажатии на кнопку edit
 editButton.addEventListener('click', function(){
     inputName.value = nameContainer.textContent;
@@ -66,6 +54,7 @@ function openPopup(popup) {
 //Функция закрытия попапов
 function closePopup(popup) {
   popup.classList.remove('popup_opened');
+  //навешивание слушателя тк переизбыток слушателей
   document.removeEventListener('keydown', closeOnClickEsq);
 }
 
@@ -93,12 +82,7 @@ popups.forEach((popup) => {
 //Закрытие попапов при клике на esq
 const closeOnClickEsq = (el) => {
   if (el.key === 'Escape') {
-    checkIfOpenedNClose();
-  }
-}
-//Проверка состояния попапа перед закрытием
-const checkIfOpenedNClose = (popup) => {
-  if (popup.classList.contains('popup_opened')) {
+    const popup = document.querySelector('.popup_opened');
     closePopup(popup);
   }
 }
@@ -215,6 +199,16 @@ popupFormNewPlace.addEventListener('submit', event => {
   closePopup(popupPlace);
   popupFormNewPlace.reset();
 })
+
+
+const formsConfig = {
+  formSelector: '.popup__form',
+  inputSelector: '.popup__input',
+  submitButtonSelector: '.popup__submit-btn',
+  inactiveButtonClass: 'popup__submit-btn_type_disabled',
+  inputErrorClass: 'popup__item-error', //мб неправильно
+  errorClass: 'popup__item-error_type_active'
+}
 
 enableValidation(formsConfig);
 

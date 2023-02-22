@@ -43,7 +43,9 @@ const toggleButtonState = (formFields, buttonSubmit, config) => {
 const setEventListeners = (formElement, config) => {
     //Все поля инпутов
     const formFields = Array.from(formElement.querySelectorAll(config.inputSelector));
-
+    //Кнопка сохранения
+    const buttonSubmit = formElement.querySelector(config.submitButtonSelector);
+    
     toggleButtonState(formFields, buttonSubmit, config); //Чтобы выключить кнопку при невалидных инпутах до ввода пользователем
 
     //На каждое поле обработчик валидности
@@ -53,8 +55,6 @@ const setEventListeners = (formElement, config) => {
             toggleButtonState(formFields, buttonSubmit, config);
         })
     })
-    //Кнопка сохранения
-    const buttonSubmit = formElement.querySelector(config.submitButtonSelector);
 }
 
 
