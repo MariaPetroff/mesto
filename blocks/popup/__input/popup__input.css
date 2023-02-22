@@ -28,11 +28,3 @@
 ::placeholder {
     color: rgba(196, 196, 196, 1);
 }
-
-.popup__input_type_invalid {
-    border-color: red;
-}
-
-.popup__item-error_type_active {
-    color: red;
-}

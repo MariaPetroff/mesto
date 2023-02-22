@@ -1,4 +1,5 @@
 //массив инпутов
+//массив инпутов
 const formProfileFields = Array.from(profileForm.querySelectorAll('.popup__input'));
 const buttonSubmitFormProfile = profileForm.querySelector('.popup__submit-btn');
 
@@ -14,16 +15,21 @@ formProfileFields.forEach((elementField) => {
         //Проверка на валидность отдельных полей формы
         if (!fieldIsValid) {
             field.classList.add('popup__input_type_invalid');
+            elementError.classList.add('popup__item-error_type_active');
+            buttonSubmitFormProfile.classList.add('popup__submit-btn_type_disabled');
         } else {
             field.classList.remove('popup__input_type_invalid');
+            elementError.classList.remove('popup__item-error_type_active');
         }
 
         //Проверка на валидность всей формы
         const formIsValid = formProfileFields.every((item) => item.validity.valid);
         if (formIsValid) {
             buttonSubmitFormProfile.removeAttribute('disabled');
+            buttonSubmitFormProfile.classList.remove('popup__submit-btn_type_disabled');
         } else {
             buttonSubmitFormProfile.setAttribute('disabled', 'disabled');
+            buttonSubmitFormProfile.classList.add('popup__submit-btn_type_disabled');
         }
     });
 });
