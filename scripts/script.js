@@ -8,7 +8,8 @@ const popupFormNewPlace = document.querySelector('.popup__form_type_new-place');
 const popupFullCard = document.querySelector('.popup_type_image');
 const popupFigure = popupFullCard.querySelector('.popup__figure');
 const popupFigcaption = popupFullCard.querySelector('.popup__figcaption');
-const popupContainers = document.querySelectorAll('.popup__container');
+const popupContainers = document.querySelectorAll('.popup__container')
+
 
 //Кнопки
 const editButton = document.querySelector('.profile__edit-button');
@@ -64,19 +65,19 @@ closeButtons.forEach(button => {
 })
 
 //Закрытие попапов при клике на оверлей
-popupContainers.forEach(container => {
-  container.addEventListener('click', evt => {
-    evt.preventDefault();
-  });
-})
+//popupContainers.forEach(container => {
+//  container.addEventListener('click', evt => {
+//    evt.preventDefault();
+//  });
+//})
 
-popups.forEach((popup) => {
-  popup.addEventListener('click', evt => {
-    if (!evt.defaultPrevented) {
-      closePopup(popup);
-    }
-  })
-})
+//popups.forEach((popup) => {
+//  popup.addEventListener('click', evt => {
+//    if (!evt.defaultPrevented) {
+//      closePopup(popup);
+//    }
+//  })
+//})
 
 //Закрытие попапов при клике на esq
 
@@ -196,3 +197,13 @@ popupFormNewPlace.addEventListener('submit', event => {
 })
 
 
+const formsConfig = {
+  formSelector: '.popup__form',
+  inputSelector: '.popup__input',
+  submitButtonSelector: '.popup__submit-btn',
+  inactiveButtonClass: 'popup__submit-btn_type_disabled',
+  inputErrorClass: 'popup__item-error',
+  errorClass: 'popup__item-error_type_active'
+}
+
+//enableValidation(formsConfig);
