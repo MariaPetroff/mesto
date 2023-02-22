@@ -1,5 +1,5 @@
 .popup__form-item {
-    margin: 0 0 30px;
+    margin: 0;
     display: flex;
     flex-direction: column;
     justify-content: center;
