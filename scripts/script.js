@@ -149,6 +149,7 @@ function createCard(link, name) {
     cardImage.src = link;
     const cardName = cardsElement.querySelector('.cards__caption');
     cardName.textContent = name;
+    cardImage.alt = name;
 
     //Слушатели кнопок 
     setListeners(cardsElement);
