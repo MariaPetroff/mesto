@@ -47,6 +47,12 @@ const setEventListeners = (formElement, config) => {
     const buttonSubmit = formElement.querySelector(config.submitButtonSelector);
     
     toggleButtonState(formFields, buttonSubmit, config); //Чтобы выключить кнопку при невалидных инпутах до ввода пользователем
+    //Деактивация кнопки после сабмита
+    formElement.addEventListener('reset', () => {
+        setTimeout(() => {
+            toggleButtonState(formFields, buttonSubmit, config); 
+        }, 0);
+    })
 
     //На каждое поле обработчик валидности
     formFields.forEach((fieldElement) => {
