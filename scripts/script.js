@@ -17,7 +17,6 @@ const closeButtons = document.querySelectorAll('.popup__close-btn');
 const plusButton = document.querySelector('.profile__plus-button');
 //Темплейт
 const cardsList = document.querySelector('.cards');
-const cardsTemplate = document.querySelector('.cards-template').content;
 
 //Константы профиля
 const nameContainer = document.querySelector('.profile__name');
@@ -29,6 +28,81 @@ const inputPlace = popupFormNewPlace.querySelector('.popup__input_type_place');
 const inputLink = popupFormNewPlace.querySelector('.popup__input_type_link');
 const placeContainer = document.querySelector('.cards__caption');
 const linkContainer = document.querySelector('.cards__image');
+
+
+
+
+class Card {
+  data;
+  cardTemplate;
+  cardElement;
+  cardImage;
+  cardName;
+  likeButton;
+  deleteButton;
+
+  constructor() {
+    this.getTemplate();
+  }
+
+
+  getTemplate() {
+    this.cardTemplate = document.querySelector('.cards-template').content;
+  } 
+
+  createClassCard(link, name) {
+    this.cardElement = this.cardTemplate.cloneNode(true);
+
+    this.cardImage = this.cardElement.querySelector('.cards__image');
+    this.cardImage.src = link;
+    this.cardName = this.cardElement.querySelector('.cards__caption');
+    this.cardName.textContent = name;
+    this.cardImage.alt = name;
+
+    // Кнопки like и delete
+    this.likeButton = this.cardElement.querySelector('.cards__like-button');
+    console.log(this.likeButton);
+    this.deleteButton = this.cardElement.querySelector('.cards__delete-btn');
+
+    //открытие попапа картинки при нажатии
+    this.cardImage.addEventListener('click', event => {
+      popupFigure.src = link;
+      popupFigcaption.textContent = name;
+      popupFigure.alt = name;
+      openPopup(popupFullCard);
+    })
+
+    this.setListeners();
+
+    return this.cardElement;
+  }
+
+  deleteCard() {
+    this.deleteButton.closest('.cards__list-item').remove();
+  }
+
+  toggleLike() {
+    this.likeButton.classList.toggle('like_active');
+  }
+
+  //метод для слушателей кнопок
+  setListeners() {
+      //Like
+    this.likeButton.addEventListener('click', () => {
+      this.toggleLike();
+      console.log('like');
+    })
+    //Delete
+    this.deleteButton.addEventListener('click', () => {
+      this.deleteCard();
+    })
+  }
+
+}
+
+
+
+
 
 
 //Вызов попапа профиля (и перезапись его данных) при нажатии на кнопку edit
@@ -89,9 +163,9 @@ const closeOnClickEsq = (el) => {
 
 
 //Функция нажатия на кнопки лайк 
-function toggleLike(event) {
-  event.target.classList.toggle('like_active');
-}
+//function toggleLike(event) {
+//  event.target.classList.toggle('like_active');
+//}
 
 
 //Перезапись данных профиля при нажатии на 'Сохранить' или enter
@@ -144,37 +218,11 @@ renderCards();
 
 //Функция создания каркаса карточки
 function createCard(link, name) {
-    const cardsElement = cardsTemplate.cloneNode(true);
-    const cardImage = cardsElement.querySelector('.cards__image');
-    cardImage.src = link;
-    const cardName = cardsElement.querySelector('.cards__caption');
-    cardName.textContent = name;
-    cardImage.alt = name;
-
-    //Слушатели кнопок 
-    setListeners(cardsElement);
-    //открытие попапа картинки при нажатии
-    cardImage.addEventListener('click', event => {
-      popupFigure.src = link;
-      popupFigcaption.textContent = name;
-      popupFigure.alt = name;
-      openPopup(popupFullCard);
-    })
+    const cardItem = new Card();
+    const cardsElement = cardItem.createClassCard(link, name);
 
     return cardsElement;
 };
-
-//Функция для слушателей кнопок
-function setListeners(item) {
-    //Like
-    item.querySelector('.cards__like-button').addEventListener('click', event => {
-      toggleLike(event);
-    })
-    //Delete
-    item.querySelector('.cards__delete-btn').addEventListener('click', event => {
-      deleteCard(event);
-    })
-}
 
 
 //Функция создания новой карточки
@@ -189,9 +237,9 @@ function addNewCard() {
 
 
 //Функция удаления карточки
-function deleteCard(event){
-  event.target.closest('.cards__list-item').remove();
-}
+//function deleteCard(event){
+//  event.target.closest('.cards__list-item').remove();
+//}
 
 //Добавление новой карточки при вводе данных и нажатии на 'Создать'/enter
 popupFormNewPlace.addEventListener('submit', event => {
