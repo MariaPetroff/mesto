@@ -7,9 +7,10 @@ class Card {
     likeButton;
     deleteButton;
   
-    constructor(data) {
-      this.data = data;
-      
+    constructor({link, name}) {
+      //this.data = data;
+      this._link = link;
+      this._name = name;
   
       this.getTemplate();
     }
@@ -19,14 +20,14 @@ class Card {
       this.cardTemplate = document.querySelector('.cards-template').content;
     } 
   
-    createClassCard(link, name) {
+    createClassCard() {
       this.cardElement = this.cardTemplate.cloneNode(true);
   
       this.cardImage = this.cardElement.querySelector('.cards__image');
-      this.cardImage.src = link;
+      this.cardImage.src = this._link;
       this.cardName = this.cardElement.querySelector('.cards__caption');
-      this.cardName.textContent = name;
-      this.cardImage.alt = name;
+      this.cardName.textContent = this._name;
+      this.cardImage.alt = this._name;
   
       // Кнопки like и delete
       this.likeButton = this.cardElement.querySelector('.cards__like-button');
@@ -34,10 +35,10 @@ class Card {
       this.deleteButton = this.cardElement.querySelector('.cards__delete-btn');
   
       //открытие попапа картинки при нажатии
-      this.cardImage.addEventListener('click', event => {
-        popupFigure.src = link;
-        popupFigcaption.textContent = name;
-        popupFigure.alt = name;
+      this.cardImage.addEventListener('click', () => {
+        popupFigure.src = this._link;
+        popupFigcaption.textContent = this._name;
+        popupFigure.alt = this._name;
         openPopup(popupFullCard);
       })
   

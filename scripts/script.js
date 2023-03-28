@@ -145,26 +145,27 @@ const initialCards = [
 //Создание изначальных карточек из массива
 function renderCards() {
   initialCards.forEach((element) => {
-    const initialItem = createCard(element.link, element.name);
-    cardsList.append(initialItem);
+    const initialItem = new Card(element);
+    cardsList.append(initialItem.createClassCard(element.link, element.name));
   });
 };
 
 renderCards();
 
 //Функция создания каркаса карточки
-function createCard(link, name) {
-    const cardItem = new Card();
-    const cardsElement = cardItem.createClassCard(link, name);
-
-    return cardsElement;
-};
+//function createCard(link, name) {
+//    const cardItem = new Card(link, name);
+//    const cardsElement = cardItem.createClassCard();
+//
+//    return cardsElement;
+//};
 
 
 //Функция создания новой карточки
 function createNewCard() {
-  const newCard = createCard(inputLink.value, inputPlace.value);
-  return newCard;
+  const newCard = new Card({link:inputLink.value, name:inputPlace.value});
+  const newCardElement = newCard.createClassCard();
+  return newCardElement;
   }
 //Функция добавления новой карточки
 function addNewCard() {
